@@ -105,7 +105,8 @@ summary(activity)
 ```
 
 
-A new dataset tidyActivity is created, which replaces NA values with the mean of the steps by interval.
+A new dataset tidyActivity is created. 
+Strategy for imputing missing values: NA values are replaced with the mean of the steps by interval.
 
 ```r
 tidyActivity <- group_by(activity,interval) %>% mutate(runningmean=mean(steps,na.rm=TRUE)) %>% mutate(steps=ifelse(is.na(steps),runningmean,steps)) %>%

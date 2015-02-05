@@ -298,7 +298,8 @@ plot(meanStepsbyInterval$interval,meanStepsbyInterval$meanSteps,type=&quot;l&quo
 ##  NA&#39;s   :2304
 </code></pre>
 
-<p>A new dataset tidyActivity is created, which replaces NA values with the mean of the steps by interval.</p>
+<p>A new dataset tidyActivity is created. 
+Strategy for imputing missing values: NA values are replaced with the mean of the steps by interval.</p>
 
 <pre><code class="r">tidyActivity &lt;- group_by(activity,interval) %&gt;% mutate(runningmean=mean(steps,na.rm=TRUE)) %&gt;% mutate(steps=ifelse(is.na(steps),runningmean,steps)) %&gt;%
         select(steps,date,interval)
